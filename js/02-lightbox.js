@@ -3,30 +3,19 @@ import { galleryItems } from './gallery-items.js';
 
 const divGallery = document.querySelector('.gallery');
 
-galleryItems.map(image => {
-
-    let markUp = `
+const markUp = galleryItems
+    .map(image =>
+        `
         <a class="gallery__item" href="${image.original}">
             <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
         </a>
-    `;
+        `)
+    .join("");
 
-    divGallery.insertAdjacentHTML('beforeend', markUp);
+divGallery.insertAdjacentHTML('beforeend', markUp);
+
+const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: "alt",
+    captionDelay: 250
 });
-
-
-divGallery.addEventListener('click', onClick);
-
-function onClick(event) {
-    event.preventDefault();
-
-    if (event.target.nodeName !== "IMG") {
-        return;
-    }
-
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captions: true,
-        captionsData: "alt",
-        captionDelay: 250
-    });
-}

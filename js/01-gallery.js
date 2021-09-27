@@ -3,24 +3,17 @@ import { galleryItems } from './gallery-items.js';
 
 const divGallery = document.querySelector('.gallery');
 
-galleryItems.map(image => {
-    
-    let markUp = `
-    <div class="gallery__item">
-        <a class="gallery__link" href="${image.original}">
-            <img
-                class="gallery__image"
-                src="${image.preview}"
-                data-source="${image.original}"
-                alt="${image.description}"
-            />
+const markUp = galleryItems
+    .map(image =>
+        `
+        <a class="gallery__item" href="${image.original}">
+            <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
         </a>
-    </div>
-    `;
+        `)
+    .join("");
 
-    divGallery.insertAdjacentHTML('beforeend', markUp);
-});
-
+divGallery.insertAdjacentHTML('beforeend', markUp);
+    
 divGallery.addEventListener('click', onClick);
 
 function onClick(event) {
