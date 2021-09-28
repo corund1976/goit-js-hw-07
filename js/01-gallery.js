@@ -20,8 +20,7 @@ const markUp = galleryItems
     .join("");
 
 divGallery.insertAdjacentHTML('beforeend', markUp);
-            
-divGallery.removeEventListener('click', onClick);    
+
 divGallery.addEventListener('click', onClick);
 
 function onClick(event) {
@@ -37,14 +36,16 @@ function onClick(event) {
 
     instance.show();
     
+    document.addEventListener("keydown", onEscDown);
+    
+    function onEscDown(event) {
+
+        if (event.code === "Escape") {
+            instance.close();
+        }
+        document.removeEventListener("keydown", onEscDown);
+    };
+
+
 }
 
-divGallery.removeEventListener("keydown", onEscDown);
-divGallery.addEventListener("keydown", onEscDown);
-    
-function onEscDown(event) {
-
-    if (event.code === "Escape") {
-        instance.close();
-    }
-};
