@@ -32,14 +32,13 @@ function onClick(event) {
         return;
     }
 
-    const instance = basicLightbox.create(`
-        <img src="${event.target.dataset.source}">
-    `,
+    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}">`,
         {
             onClose: (instance) => {
                 document.removeEventListener("keydown", onEscDown);
             }
-        });
+        }
+    );
 
     instance.show();
     
