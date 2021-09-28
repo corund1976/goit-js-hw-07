@@ -6,9 +6,16 @@ const divGallery = document.querySelector('.gallery');
 const markUp = galleryItems
     .map(image =>
         `
-        <a class="gallery__item" href="${image.original}">
-            <img class="gallery__image" src="${image.preview}" alt="${image.description}" />
-        </a>
+        <div class="gallery__item">
+            <a class="gallery__link" href="${image.original}">
+                <img
+                    class="gallery__image"
+                    src="${image.preview}"
+                    data-source="${image.original}"
+                    alt="${image.description}"
+                />
+            </a>
+        </div>
         `)
     .join("");
 
@@ -29,3 +36,5 @@ function onClick(event) {
 
     instance.show();
 }
+
+// instance.close()
