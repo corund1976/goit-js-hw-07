@@ -34,13 +34,16 @@ function onClick(event) {
         <img src="${event.target.dataset.source}">
     `)
 
-    instance.show()
+    instance.show();
     
-    divGallery.addEventListener("keydown", event => {
+    divGallery.addEventListener("keydown", onEscDown);
+    
+    function onEscDown(event) {
 
         if (event.code === "Escape") {
-            instance.close()
+            instance.close();
+            divGallery.removeEventListener("keydown", onEscDown);
         }
-    });
+    };
 }
 
