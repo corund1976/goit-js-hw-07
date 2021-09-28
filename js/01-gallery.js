@@ -26,6 +26,8 @@ divGallery.addEventListener('click', onClick);
 function onClick(event) {
     event.preventDefault();
 
+    document.removeEventListener("keydown", onEscDown);
+
     if (event.target.nodeName !== "IMG") {
         return;
     }
@@ -42,10 +44,8 @@ function onClick(event) {
 
         if (event.code === "Escape") {
             instance.close();
+            document.removeEventListener("keydown", onEscDown);
         }
-        document.removeEventListener("keydown", onEscDown);
     };
-
-
 }
 
